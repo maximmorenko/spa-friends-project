@@ -1,54 +1,26 @@
-import { useState, useEffect } from 'react';
-import { Controls } from './components/Controls';
+import { useState } from 'react';
+import { Route, Routes } from 'react-router-dom';
 import { Header } from './components/Header';
 import { Main } from './components/Main';
-import List from './components/List';
-import Card from './components/Card'
-import { getAllPeople } from '../src/Api'
+
+import { HomePage } from './pages/HomePage';
+import { Details } from './pages/Details';
+import { NotFound } from './pages/NotFound';
+
 
 function App() {
-    const [people, setPeople] = useState([]);
 
-    useEffect(() => {
-        getAllPeople()
-        .then(data => { setPeople(data.results) })
-    }, [])
+    const [people, setPeople] = useState([]);
 
     return (
         <>
             <Header />
             <Main>
-                <Controls/>
-                <List>
-                    {people.map((item) => {
-                        const personInfo = {
-                            img: item.picture.large,
-                            name: `${item.name.first} ${item.name.last}`,
-                            info: [
-                                {
-                                    title: 'Gender',
-                                    description: item.gender,
-                                },
-                                {
-                                    title: 'Location',
-                                    description: `${item.location.country} ${item.location.city}`,
-                                },
-                                {
-                                    title: 'Age',
-                                    description: item.dob.age,
-                                },
-                            ],
-                        };
-
-                        return (
-                            <Card
-                                key={item.id.value === null ? `${item.name.first}${item.name.last}` : item.id.value}
-                                // onClick={() => push(`/name/${item.name.first}`)}
-                                {...personInfo}
-                            />
-                        );
-                    })}
-                </List>
+                <Routes>
+                    <Route path='/' element={<HomePage people={people} setPeople={setPeople}/>}/>
+                    <Route path='/person/:name' element={<Details/>}/>
+                    <Route  path='*' element={<NotFound/>}/>
+                </Routes>
             </Main>
         </>
     );
