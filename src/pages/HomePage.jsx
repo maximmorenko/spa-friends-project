@@ -23,7 +23,8 @@ export const HomePage = ({people, setPeople}) => {
             // проверяем по всем людям их имена, совпадают ли они с текущим (выбраным)
             // также имя человека в массиве и введенное слово в поиске приводим к нижнему регистру
             data = data.filter(
-                person => person.name.first.toLowerCase().includes(search.toLowerCase())
+                // person => person.name.first.toLowerCase().includes(search.toLowerCase())
+                person => `${person.name.first}${person.name.last}`.toLowerCase().includes(search.toLowerCase())
             )
         }
         
@@ -36,6 +37,16 @@ export const HomePage = ({people, setPeople}) => {
     
         setFilteredPeople(data);
     };
+
+    // const getAllPeople = async () => {
+    //     const response = await fetch(ALL_PEOPLE);
+    //     return await response.json();
+    // }
+
+    // useEffect(() => {
+    //     getAllPeople.then(({ data }) => setPeople(data.results));
+    //     // eslint-disable-next-line
+    // }, [])
 
     useEffect(() => {
         if (!people.length)
@@ -74,7 +85,7 @@ export const HomePage = ({people, setPeople}) => {
                         };
 
                         return (
-                            <Link key={`${item.name.first}${item.name.last}`} to={`/person/${item.name.first}${item.name.last}`}>
+                            <Link style={{ textDecoration: 'none' }} key={`${item.name.first}${item.name.last}`} to={`/person/${item.name.first}${item.name.last}`}>
                                 <Card key={item.id.value === null ? `${item.name.first}${item.name.last}` : item.id.value} {...personInfo}/>
                             </Link>
                         );

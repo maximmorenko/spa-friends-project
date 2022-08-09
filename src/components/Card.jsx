@@ -3,11 +3,12 @@ import React from 'react';
 
 const Wrapper = styled.article`
     border-radius: var(--radii);
-    background-color: car(--colors-ui-base);
+    background-color: var(--colors-ui-base);
     box-shadow: var(--shadow);
     cursor: pointer;
-    //   чтобы картинки обрезались
     overflow: hidden;
+
+
 `;
 
 const CardImage = styled.img`
@@ -27,6 +28,7 @@ const CardTitle = styled.h3`
     margin: 0;
     font-size: var(--fs-md);
     font-weight: var(--fw-bold);
+    text-decoration: none;
 `;
 
 const CardList = styled.ul`

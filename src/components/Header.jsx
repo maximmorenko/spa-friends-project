@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import { Container } from './Container';
-import {IoSunny, IoSunnyOutline} from 'react-icons/io5'
+import {IoSunny, IoSunnyOutline, IoAccessibilitySharp} from 'react-icons/io5'
+import {Link } from 'react-router-dom';
 
 const HeaderEl = styled.header`
     box-shadow: var(--shadow);
@@ -12,10 +13,20 @@ const Wrapper = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 2rem 0;
+    padding: 1rem 0;
 `;
 
-const Title = styled.a.attrs({
+const Title = styled.li`
+    color: var(--colors-text);
+    font-size: var(--fs-sm);
+    margin-left: 2rem;
+    text-decoration: none;
+    font-weight: var(--fw-bold);
+    text-transform: uppercase;
+    list-style-type: none;
+    `;
+
+const Logo = styled.a.attrs({
         href: '/',
     })`
     color: var(--colors-text);
@@ -25,13 +36,21 @@ const Title = styled.a.attrs({
     text-transform: uppercase;
     `;
 
-const ModeSwitcher = styled.div`
+const Nav = styled.ul`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    `;
+
+const ModeSwitcher = styled.li`
+    margin-left: 2rem;
     color: var(--colors-text);
     font-size: var(--fs-sm);
     cursor: pointer;
-    // font-weight: var(--fw-bold);
-    // text-transform: capitalize;
+    font-weight: var(--fw-bold);
+    text-transform: capitalize;
     text-transform: uppercase;
+    list-style-type: none;
 `;
 
 function Header(props) {
@@ -50,15 +69,20 @@ function Header(props) {
         <HeaderEl>
             <Container>
                 <Wrapper>
-                    <Title>do you have any friends?</Title>
-                    <ModeSwitcher onClick={toggleTheme}>
-                        {theme === 'light' ? (
-                        <IoSunny size="12px" />
-                        ) : (
-                        <IoSunnyOutline size="12px" />
-                        )}{' '}
-                        <span style={{ marginLeft: '0.75rem' }}>{theme} Theme</span>
-                    </ModeSwitcher>
+                    <Link to='/'><Logo><IoAccessibilitySharp size="25px"/></Logo></Link>
+                    <Nav>
+                        <Link style={{ textDecoration: 'none' }} to='/'><Title>home</Title></Link>
+                        <a style={{ textDecoration: 'none' }} href='https://github.com/maximmorenko/spa-friends-project'><Title>repo</Title></a>
+                        <Link style={{ textDecoration: 'none' }} to='/blog'><Title>blog</Title></Link>
+                        <ModeSwitcher onClick={toggleTheme}>
+                            {theme === 'light' ? (
+                            <IoSunny size="12px" />
+                            ) : (
+                            <IoSunnyOutline size="12px" />
+                            )}{' '}
+                            <span style={{ marginLeft: '0.2rem' }}>{theme} Theme</span>
+                        </ModeSwitcher>
+                    </Nav>
                 </Wrapper>
             </Container>
         </HeaderEl>
