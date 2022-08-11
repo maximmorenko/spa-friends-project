@@ -40,3 +40,8 @@ a:-webkit-any-link {
     text-decoration: none;
     color: inherit;
 }
+
+.active {
+    color: rgb(124, 124, 150);
+    cursor: default;
+}

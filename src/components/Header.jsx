@@ -1,8 +1,8 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Container } from './Container';
-import {IoSunny, IoSunnyOutline, IoAccessibilitySharp} from 'react-icons/io5'
-import {Link } from 'react-router-dom';
+import { IoSunny, IoSunnyOutline, IoAccessibilitySharp } from 'react-icons/io5'
+import { Link } from 'react-router-dom';
 
 const HeaderEl = styled.header`
     box-shadow: var(--shadow);
@@ -26,9 +26,7 @@ const Title = styled.li`
     list-style-type: none;
     `;
 
-const Logo = styled.a.attrs({
-        href: '/',
-    })`
+const Logo = styled.div`
     color: var(--colors-text);
     font-size: var(--fs-sm);
     text-decoration: none;
@@ -72,7 +70,7 @@ function Header(props) {
                     <Link to='/'><Logo><IoAccessibilitySharp size="25px"/></Logo></Link>
                     <Nav>
                         <Link style={{ textDecoration: 'none' }} to='/'><Title>home</Title></Link>
-                        <a style={{ textDecoration: 'none' }} href='https://github.com/maximmorenko/spa-friends-project'><Title>repo</Title></a>
+                        <Link style={{ textDecoration: 'none' }} to='/about'><Title>about</Title></Link>
                         <Link style={{ textDecoration: 'none' }} to='/blog'><Title>blog</Title></Link>
                         <ModeSwitcher onClick={toggleTheme}>
                             {theme === 'light' ? (

@@ -7,14 +7,12 @@ const Wrapper = styled.article`
     box-shadow: var(--shadow);
     cursor: pointer;
     overflow: hidden;
-
-
 `;
 
 const CardImage = styled.img`
-    display: block;
+    // display: block;
     width: 100%;
-    height: 150px;
+    // height: 170px;
     object-fit: cover;
     object-position: center;
     box-shadow: var(--shadow);
@@ -48,6 +46,7 @@ const CardListItem = styled.li`
 
 function Card(props) {
     const {img, name, info = [], onClick} = props;
+    
 
     return (
         <Wrapper onClick={onClick}>
