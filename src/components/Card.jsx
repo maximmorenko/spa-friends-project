@@ -47,7 +47,6 @@ const CardListItem = styled.li`
 function Card(props) {
     const {img, name, info = [], onClick} = props;
     
-
     return (
         <Wrapper onClick={onClick}>
             <CardImage src={img} alt={name}/>

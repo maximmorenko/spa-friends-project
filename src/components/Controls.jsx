@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import { Search } from './Search';
 import { CustomSelect } from './CustomSelect';
+import { FilterByGender } from './FilterByGender';
 
 const options = [
     { value: '0-18', label: '0-18' },
@@ -28,18 +29,20 @@ const Wrapper = styled.div`
 export const Controls = ({ onSearch }) => {
     const [search, setSearch] = useState('');
     const [age, setAge] = useState('');
+    const [gender, setGender] = useState("all");
 
       useEffect(() => {
         const ageValue = age?.value || '';
-        onSearch(search, ageValue);
+        onSearch(search, ageValue, gender);
 
         // eslint-disable-next-line
-      }, [search, age]);
+      }, [search, age, gender]);
 
     return (
         <Wrapper>
             {/* компонент Search ожидаем пропсы search и setSearch, передаем их ему*/}
             <Search search={search} setSearch={setSearch} />
+            <FilterByGender gender={gender} setGender={setGender}/>
             <CustomSelect
             // передаем пропсы
                 options={options}
