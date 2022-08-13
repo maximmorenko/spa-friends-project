@@ -10,7 +10,7 @@ export const HomePage = ({people, setPeople}) => {
     
     const [filteredPeople, setFilteredPeople] = useState(people);
     
-    const handleSearch = (search, age) => {
+    const handleSearch = (search, age, gender) => {
         let data = [...people];
         
         if (search) {
@@ -23,6 +23,13 @@ export const HomePage = ({people, setPeople}) => {
             data = data.filter(
                 person => person.dob.age.includes(age)
             );
+        }
+
+        if (gender) {
+            
+            data = data.filter(
+                person => `${person.gender}`.includes(gender)
+            )
         }
     
         setFilteredPeople(data);

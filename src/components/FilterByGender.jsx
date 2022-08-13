@@ -35,7 +35,7 @@ const Item = styled.div`
   margin-bottom: 10px;
 `;
 
-const RadioButtonLabel = styled.label`
+const Label = styled.label`
   position: absolute;
   top: 25%;
   left: 4px;
@@ -46,43 +46,43 @@ const RadioButtonLabel = styled.label`
   border: 1px solid #ccc;
 `;
 
-const RadioButton = styled.input`
-  opacity: 0;
-  z-index: 1;
-  cursor: pointer;
-  width: 25px;
-  height: 25px;
-  margin-right: 10px;
-  &:hover ~ ${RadioButtonLabel} {
-    background: #ccc;
-    &::after {
-      content: "\f005";
-      font-family: "FontAwesome";
-      display: block;
-      color: white;
-      width: 12px;
-      height: 12px;
-      margin: 4px;
-    }
-  }
-  &:checked + ${Item} {
-    background: yellowgreen;
-    border: 2px solid yellowgreen;
-  }
-  &:checked + ${RadioButtonLabel} {
-    background: yellowgreen;
-    border: 1px solid yellowgreen;
-    &::after {
-      content: "\f005";
-      font-family: "FontAwesome";
-      display: block;
-      color: white;
-      width: 12px;
-      height: 12px;
-      margin: 4px;
-    }
-  }
-`;
+// const Input = styled.input`
+//   opacity: 0;
+//   z-index: 1;
+//   cursor: pointer;
+//   width: 25px;
+//   height: 25px;
+//   margin-right: 10px;
+//   &:hover ~ ${RadioButtonLabel} {
+//     background: #ccc;
+//     &::after {
+//       content: "\f005";
+//       font-family: "FontAwesome";
+//       display: block;
+//       color: white;
+//       width: 12px;
+//       height: 12px;
+//       margin: 4px;
+//     }
+//   }
+//   &:checked + ${Item} {
+//     background: yellowgreen;
+//     border: 2px solid yellowgreen;
+//   }
+//   &:checked + ${RadioButtonLabel} {
+//     background: yellowgreen;
+//     border: 1px solid yellowgreen;
+//     &::after {
+//       content: "\f005";
+//       font-family: "FontAwesome";
+//       display: block;
+//       color: white;
+//       width: 12px;
+//       height: 12px;
+//       margin: 4px;
+//     }
+//   }
+// `;
 
 
 
@@ -96,36 +96,36 @@ const FilterByGender = ({gender, setGender}) => {
     return (
         <InputContainer>
             <Item>
-                <RadioButton
+                <Input
                     type="radio"
                     name="radio"
                     value="all"
                     checked={gender === "all"}
                     onChange={event => hendleFilterByGender(event)}
                 />
-                <RadioButtonLabel />
+                <Label />
                 <div>all</div>
             </Item>
             <Item>
-                <RadioButton
-                type="radio"
-                name="radio"
-                value="male"
-                checked={gender === "male"}
-                onChange={event => hendleFilterByGender(event)}
+                <Input
+                    type="radio"
+                    name="radio"
+                    value="male"
+                    checked={gender === "male"}
+                    onChange={event => hendleFilterByGender(event)}
                 />
-                <RadioButtonLabel />
+                <Label />
                 <div>male</div>
             </Item>
             <Item>
-                <RadioButton
-                type="radio"
-                name="radio"
-                value="female"
-                checked={gender === "female"}
-                onChange={event => hendleFilterByGender(event)}
+                <Input
+                    type="radio"
+                    name="radio"
+                    value="female"
+                    checked={gender === "female"}
+                    onChange={event => hendleFilterByGender(event)}
                 />
-                <RadioButtonLabel />
+                <Label />
                 <div>female</div>
             </Item>
         </InputContainer>

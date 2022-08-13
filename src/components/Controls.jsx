@@ -31,12 +31,12 @@ export const Controls = ({ onSearch }) => {
     const [age, setAge] = useState('');
     const [gender, setGender] = useState("all");
 
-      useEffect(() => {
-        const ageValue = age?.value || '';
-        onSearch(search, ageValue, gender);
+        useEffect(() => {
+            const ageValue = age?.value || '';
+            onSearch(search, ageValue, gender);
 
-        // eslint-disable-next-line
-      }, [search, age, gender]);
+            // eslint-disable-next-line
+        }, [search, age, gender]);
 
     return (
         <Wrapper>
