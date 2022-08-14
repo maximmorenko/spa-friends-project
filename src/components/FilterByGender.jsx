@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 
-const InputContainer = styled.label`
+const InputContainer = styled.div`
     background-color: var(--colors-ui-base);
-    padding: 1rem 2rem;
     display: flex;
     align-items: center;
     border-radius: var(--radii);
@@ -12,7 +11,7 @@ const InputContainer = styled.label`
     @media (min-width: 767px) {
         // для десктопа убираем маржин и делаем ширину 280px
         margin-bottom: 0;
-        width: 280px;
+        width: 290px;
     }
 `;
 
@@ -29,62 +28,19 @@ const Item = styled.div`
   align-items: center;
   height: 48px;
   position: relative;
-  border: 1px solid #ccc;
+//   border: 1px solid #ccc;
   box-sizing: border-box;
   border-radius: 2px;
-  margin-bottom: 10px;
 `;
 
 const Label = styled.label`
-  position: absolute;
-  top: 25%;
-  left: 4px;
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  background: white;
-  border: 1px solid #ccc;
+cursor: pointer;
+display: flex;
 `;
 
-// const Input = styled.input`
-//   opacity: 0;
-//   z-index: 1;
-//   cursor: pointer;
-//   width: 25px;
-//   height: 25px;
-//   margin-right: 10px;
-//   &:hover ~ ${RadioButtonLabel} {
-//     background: #ccc;
-//     &::after {
-//       content: "\f005";
-//       font-family: "FontAwesome";
-//       display: block;
-//       color: white;
-//       width: 12px;
-//       height: 12px;
-//       margin: 4px;
-//     }
-//   }
-//   &:checked + ${Item} {
-//     background: yellowgreen;
-//     border: 2px solid yellowgreen;
-//   }
-//   &:checked + ${RadioButtonLabel} {
-//     background: yellowgreen;
-//     border: 1px solid yellowgreen;
-//     &::after {
-//       content: "\f005";
-//       font-family: "FontAwesome";
-//       display: block;
-//       color: white;
-//       width: 12px;
-//       height: 12px;
-//       margin: 4px;
-//     }
-//   }
-// `;
-
-
+const Span = styled.span`
+margin-left: 0.3rem;
+`;
 
 const FilterByGender = ({gender, setGender}) => {
 
@@ -96,37 +52,40 @@ const FilterByGender = ({gender, setGender}) => {
     return (
         <InputContainer>
             <Item>
-                <Input
-                    type="radio"
-                    name="radio"
-                    value="all"
-                    checked={gender === "all"}
-                    onChange={event => hendleFilterByGender(event)}
-                />
-                <Label />
-                <div>all</div>
+                <Label>
+                    <Input
+                        type="radio"
+                        name="radio"
+                        value="all"
+                        checked={gender === "all"}
+                        onChange={event => hendleFilterByGender(event)}
+                    />
+                    <Span>all</Span>
+                </Label>
             </Item>
             <Item>
-                <Input
-                    type="radio"
-                    name="radio"
-                    value="male"
-                    checked={gender === "male"}
-                    onChange={event => hendleFilterByGender(event)}
-                />
-                <Label />
-                <div>male</div>
+                <Label>
+                    <Input
+                        type="radio"
+                        name="radio"
+                        value="male"
+                        checked={gender === "male"}
+                        onChange={event => hendleFilterByGender(event)}
+                    />
+                    <Span>male</Span>
+                </Label >
             </Item>
             <Item>
-                <Input
-                    type="radio"
-                    name="radio"
-                    value="female"
-                    checked={gender === "female"}
-                    onChange={event => hendleFilterByGender(event)}
-                />
-                <Label />
-                <div>female</div>
+                <Label>
+                    <Input
+                        type="radio"
+                        name="radio"
+                        value="female"
+                        checked={gender === "female"}
+                        onChange={event => hendleFilterByGender(event)}
+                    />
+                    <Span>female</Span>
+                </Label >
             </Item>
         </InputContainer>
     );

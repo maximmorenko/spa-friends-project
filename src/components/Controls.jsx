@@ -32,7 +32,7 @@ export const Controls = ({ onSearch }) => {
     const [gender, setGender] = useState("all");
 
         useEffect(() => {
-            const ageValue = age?.value || '';
+            const ageValue = age.value || '';
             onSearch(search, ageValue, gender);
 
             // eslint-disable-next-line
